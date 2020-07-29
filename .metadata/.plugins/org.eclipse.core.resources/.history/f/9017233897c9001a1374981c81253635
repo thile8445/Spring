@@ -1,0 +1,5 @@
+package com.thi.shop.models;
+
+public class Category {
+
+}

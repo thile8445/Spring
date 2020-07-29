@@ -1,0 +1,5 @@
+package spring14.spring.jpa;
+
+public class RestController {
+
+}

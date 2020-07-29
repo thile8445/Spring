@@ -1,0 +1,5 @@
+package com.thi.security.user;
+
+public class UserService {
+
+}

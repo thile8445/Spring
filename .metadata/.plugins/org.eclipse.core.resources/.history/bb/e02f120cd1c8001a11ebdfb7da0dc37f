@@ -1,0 +1,18 @@
+package spring14.spring.jpa;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@Controller
+public class RestController {
+	@Autowired
+	private TodoRepository todoRepository;
+	@GetMapping("/todo/{todoId}")
+	public Todo getTodo(@PathVariable(name = "todoId") Integer  todoId) {
+		return todoRepository.findAllById(todoId.intValue());
+	}
+}

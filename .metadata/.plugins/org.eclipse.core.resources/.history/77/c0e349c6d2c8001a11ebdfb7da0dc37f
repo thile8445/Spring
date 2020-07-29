@@ -1,0 +1,37 @@
+package spring14.spring.jpa;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@Controller
+public class RestController {
+	@Autowired
+	private TodoRepository todoRepository;
+//	@GetMapping("/todo/{todoId}")
+//	public Todo getTodo(@PathVariable(name = "todoId") Integer  todoId) {
+//		return todoRepository.findAllById(todoId.intValue());
+//	}
+	@GetMapping("/todo/{todoId}")
+	public Todo getTodo(@PathVariable(name = "todoId") Integer  todoId) {
+		return todoRepository.findById(todoId.longValue()).get();
+	}
+	@PutMapping("/todo/{todoId}")
+    public Todo editTodo(@PathVariable(name = "todoId") Integer todoId,
+                         @RequestBody Todo todo){
+		Todo todoEdit = todoRepository.findById(todoId.longValue()).get();
+		todoEdit.setTitle(todo.getTitle());
+		todoEdit.setDetail(todo.getDetail());
+        todoRepository.save(todoEdit);
+        // Trả về đối tượng sau khi đã edit
+        return todo;    }
+
+    @DeleteMapping("/todo/{todoId}")
+    public ResponseEntity deleteTodo(@PathVariable(name = "todoId") Integer todoId){
+        todoList.remove(todoId.intValue());
+        return ResponseEntity.ok().build();
+    }
+}

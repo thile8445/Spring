@@ -1,0 +1,15 @@
+package com.thi.shop.models;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class OrderDetailPK implements Serializable{
+	@Column
+	private Long order_id;
+	@Column
+	private Long product_id;
+
+}

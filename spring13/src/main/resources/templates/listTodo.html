@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:text="#{loda.value.listTodo} + ':'"></h1>
+
+
+	<ul>
+		<!--Duyệt qua toàn bộ phần tử trong biến "todoList"-->
+		<li th:each="todo : ${todoList}">
+			<!--Với mỗi phần tử, lấy ra title và detail--> <span
+			th:text="*{todo.getTitle()}"></span> : <span
+			th:text="*{todo.getDetail()}"></span>
+		</li>
+	</ul>
+</body>
+</html>
